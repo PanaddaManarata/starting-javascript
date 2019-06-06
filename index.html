@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body class="bg-dark pt-4">
@@ -42,14 +42,28 @@
             </p>
             <hr>
             <br>
-            <label for="greetingsBox">Type your message here: <input type="text" id="greetingsBox" class="form-control"/></label>
-
+            <label for="greetingsBox">Type your message here: <input type="text" id="greetingsBox" class="form-control " oninput="getText()"/></label>
+            <!-- when typing in greetingbox the value has to go in greetingbox = oninput= "function()"
+            don't forget the () to fill in the function -->
             <div class="col-6 mx-auto p-2 greetingsBoxHolder">
-                <h3><!-- Your message comes here--></h3>
+                <h3 id="textbox" value = "text">Sorry, nothing to show</h3>
             </div>
         </div>
         <script>
-            // Write your code here
+        
+            function getText(){ 
+                var placetext = document.getElementById('greetingsBox').value;
+                var lenghtText = placetext.length; 
+                    if(lenghtText >= 1){
+                        document.getElementById("textbox").innerHTML = placetext; 
+                        }
+                    else{document.getElementById("textbox").innerHTML = "Sorry, nothing to show"; }
+
+            
+                    
+                    
+            }
+
         </script>
     </div>
     <!-- END OF Part 1 -->
@@ -90,7 +104,8 @@
             </table>
         </div>
         <script>
-            // Write your code here
+            
+
         </script>
     </div>
     <!-- END OF Part 2 -->
@@ -119,7 +134,10 @@
 
         </div>
         <script>
-            // Write your code here
+            var e = document.getElementsByTagName('span')[0];
+            var d = document.createElement('li');
+                d.innerHTML = e.innerHTML;
+                e.parentNode.replaceChild(d, e);
         </script>
     </div>
     <!-- END OF Part 3 -->

@@ -95,16 +95,46 @@
                 </thead>
                 <tbody>
                 <tr id="emptyRow">
-                    <td><input type="text" id="name" class="form-control" placeholder="Fill in your name"></td>
-                    <td><input type="text" id="pizza" class="form-control" placeholder="Fill in your pizza choice"></td>
-                    <td><input type="text" id="size" class="form-control" placeholder="Fill in your chosen size"></td>
-                    <td><input type="text" id="remarks" class="form-control" placeholder="Fill in your remarks"></td>
+                    <td><input type="text" id="name" class="form-control" placeholder="Fill in your name" oninput="InputTable()"></td>
+                    <td><input type="text" id="pizza" class="form-control" placeholder="Fill in your pizza choice" oninput="InputTable()"></td>
+                    <td><input type="text" id="size" class="form-control" placeholder="Fill in your chosen size" oninput="InputTable()"></td>
+                    <td><input type="text" id="remarks" class="form-control" placeholder="Fill in your remarks" oninput="InputTable()"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <script>
             
+
+            function InputTable(){
+               
+                const name = document.getElementById('name').value
+                const pizza = document.getElementById('pizza').value
+                const size = document.getElementById('size').value
+                const remarks = document.getElementById('remarks').value
+                const order = [pizza, name, size, remarks]; 
+            
+               
+                if (order.length >= 4 && event.keyCode == 13  ){
+                    alert("You are clicked");
+                }
+            
+
+
+
+                /*if( order.length >= 1){
+                    console.log("hi")
+
+                 }*/
+
+                 else{
+                    alert("fill in the blank inputs")
+
+                 }
+            }
+
+            
+
 
         </script>
     </div>
@@ -134,9 +164,10 @@
 
         </div>
         <script>
-            var e = document.getElementsByTagName('span')[0];
+            var el = document.querySelector('span');
+            
             var d = document.createElement('li');
-                d.innerHTML = e.innerHTML;
+                
                 e.parentNode.replaceChild(d, e);
         </script>
     </div>
@@ -402,7 +433,21 @@
             <div id="moveAnimation" class="block"></div>
         </div>
         <script>
-            // Write your code here
+            var greenblock = document.getElementById('moveAnimation'); 
+            var pos = 0; 
+            var id = setInterval(frame, 2); 
+            function frame(){
+                if(pos == 480){
+                    clearInterval(id); 
+                }
+                else{
+                    pos++; 
+                    greenblock.style.left = pos + 'px'; 
+                    
+                }
+            }
+
+
         </script>
     </div>
     <!-- END OF Part 5 -->

@@ -95,33 +95,41 @@
                 </thead>
                 <tbody>
                 <tr id="emptyRow">
-                    <td><input type="text" id="name" class="form-control" placeholder="Fill in your name" oninput="InputTable()"></td>
-                    <td><input type="text" id="pizza" class="form-control" placeholder="Fill in your pizza choice" oninput="InputTable()"></td>
-                    <td><input type="text" id="size" class="form-control" placeholder="Fill in your chosen size" oninput="InputTable()"></td>
-                    <td><input type="text" id="remarks" class="form-control" placeholder="Fill in your remarks" oninput="InputTable()"></td>
+                    <td><input type="text" id="name" class="form-control" placeholder="Fill in your name" ></td>
+                    <td><input type="text" id="pizza" class="form-control" placeholder="Fill in your pizza choice" ></td>
+                    <td><input type="text" id="size" class="form-control" placeholder="Fill in your chosen size" ></td>
+                    <td><input type="text" id="remarks" class="form-control" placeholder="Fill in your remarks" ></td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <script>
-            
+
+            document.getElementById('emptyRow').addEventListener('keypress', function(e){
+                var key = e.which || e.keyCode;
+                 if (key === 13) { 
+                    console.log("key pressed")
+                    return InputTable();
+                    }
+                })
 
             function InputTable(){
                
-                const name = document.getElementById('name').value
-                const pizza = document.getElementById('pizza').value
-                const size = document.getElementById('size').value
-                const remarks = document.getElementById('remarks').value
-                const order = [pizza, name, size, remarks]; 
-            
+                var name = document.getElementById('name').value; 
+                
+                var pizza = document.getElementById('pizza').value
+                var size = document.getElementById('size').value
+                var remarks = document.getElementById('remarks').value
+         
+                
                
-                if (order.length >= 4 && event.keyCode == 13  ){
-                    alert("You are clicked");
+                if (name.length > 0 && pizza.length > 0 && size.length > 0 ){ 
+                    var RowPizza = document.getElementById('emptyRow'); 
+                    var cloneRow = RowPizza.cloneNode(true); 
+                    document.getElementById('pizzaOrders').appendChild(cloneRow); 
+                    
                 }
             
-
-
-
                 /*if( order.length >= 1){
                     console.log("hi")
 
@@ -435,14 +443,16 @@
         <script>
             var greenblock = document.getElementById('moveAnimation'); 
             var pos = 0; 
-            var id = setInterval(frame, 2); 
+            var id = setInterval(frame, 20); 
+            var back = setInterval(frame, 50); 
             function frame(){
-                if(pos == 480){
+                if(pos >= 100){
                     clearInterval(id); 
                 }
+
                 else{
                     pos++; 
-                    greenblock.style.left = pos + 'px'; 
+                    greenblock.style.left = pos + '%'; 
                     
                 }
             }
@@ -469,9 +479,9 @@
     <!-- END OF Part 6 -->
 
     <!-- Part 7: Name selector -->
-    <div class="row">
+    <div class="row">NN
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4">
-            <h3>Part 7: Sliiiiiders</h3>
+            <h3>Part 7: Sliiiiiders</h3>Narongchai1
             <p>Recreate this very intuitive user interface. Insert the DOM nodes (html elements) using document.createElement();</p>
             <img src="../input.gif" alt="Interface" />
             <hr/>
